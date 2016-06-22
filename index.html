@@ -1,0 +1,27 @@
+<html>
+<head>
+<script>
+function send(str) {
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onload = function() {
+		document.getElementById("txtTest").innerHTML = xmlhttp.responseText;
+	};
+	xmlhttp.open("GET", "testAJAX.php?q=" + str, true);
+	xmlhttp.send();
+}
+</script>
+</head>
+<body>
+
+<p><b>Change the value:</b></p>
+<form> 
+Send Data: <select onchange="send(this.value)">
+<option value = "-" selected disabled> ----- </option>
+<option value="test1"> Test Entry 1</option>
+<option value="test2"> Test Entry 2</option>
+<option value="test3"> Test Entry 3</option>
+</select>
+</form>
+<p>Server response: <span id="txtTest"></span></p>
+</body>
+</html>
